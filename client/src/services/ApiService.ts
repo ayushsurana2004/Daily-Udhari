@@ -5,7 +5,7 @@ class ApiService {
     private api: AxiosInstance;
     
     private constructor() {
-        const baseUrl = import.meta.env.VITE_API_URL;
+        const baseUrl = import.meta.env.VITE_API_URL || 'https://daily-udhari-backend.onrender.com/api';
 
         this.api = axios.create({
             baseURL: baseUrl,
