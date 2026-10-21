@@ -6,11 +6,13 @@ import GroupDetail from './pages/Dashboard/GroupDetail';
 import Activity from './pages/Dashboard/Activity';
 import Friends from './pages/Dashboard/Friends';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import InstallPrompt from './components/InstallPrompt';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
     return (
         <Router>
+            <InstallPrompt />
             <AnimatePresence mode="wait">
                 <Routes>
                     {/* Public Routes */}
