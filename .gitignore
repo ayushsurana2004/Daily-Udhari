@@ -31,6 +31,15 @@ client/build/
 dist-ssr/
 *.tsbuildinfo
 
+# ── Android Outputs & Tooling ─────────────────────────────────────────────────
+.gradle/
+**/build/
+client/android/build/
+client/android/app/build/
+client/android/local.properties
+*.apk
+*.aab
+
 # Java / Maven Outputs
 target/
 **/target/
