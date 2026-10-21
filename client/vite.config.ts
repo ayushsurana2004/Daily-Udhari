@@ -10,7 +10,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'apple-touch-icon.svg', 'pwa-maskable-512x512.svg'],
+      includeAssets: ['favicon.png', 'apple-touch-icon.png', 'pwa-512x512.png'],
       manifest: {
         name: 'Daily Udhari',
         short_name: 'Udhari',
@@ -23,14 +23,9 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: 'pwa-192x192.svg',
+            src: 'pwa-192x192.png',
             sizes: '192x192',
-            type: 'image/svg+xml',
-          },
-          {
-            src: 'pwa-512x512.svg',
-            sizes: '512x512',
-            type: 'image/svg+xml',
+            type: 'image/png',
           },
           {
             src: 'pwa-512x512.png',
@@ -39,9 +34,9 @@ export default defineConfig({
             purpose: 'any',
           },
           {
-            src: 'pwa-maskable-512x512.svg',
+            src: 'pwa-maskable-512x512.png',
             sizes: '512x512',
-            type: 'image/svg+xml',
+            type: 'image/png',
             purpose: 'maskable',
           },
         ],
