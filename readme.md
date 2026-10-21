@@ -1,6 +1,6 @@
-# Daily Udhar
+# Daily Udhari
 
-Daily Udhar is a full-stack financial application designed to make expense tracking, splitting bills, and settling debts with friends and groups incredibly simple and transparent. It features a modern, animated React frontend and a robust Java Spring Boot backend.
+Daily Udhari is a full-stack financial application designed to make expense tracking, splitting bills, and settling debts with friends and groups incredibly simple and transparent. It features a modern, animated React frontend and a robust Java Spring Boot backend.
 
 ---
 

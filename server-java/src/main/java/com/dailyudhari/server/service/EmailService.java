@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 /**
- * EmailService — sends all transactional emails for Daily Udhar via Gmail SMTP.
+ * EmailService — sends all transactional emails for Daily Udhari via Gmail SMTP.
  * All send methods are @Async so they never block the HTTP response.
  */
 @Service

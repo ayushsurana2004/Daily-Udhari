@@ -91,11 +91,11 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ onClose, onLogout }
     };
 
     const handleShare = async () => {
-        const shareText = `Add me on Daily Udhar! My Unique Code is ${userCode} (Mobile: ${profile.mobileNumber || ''})`;
+        const shareText = `Add me on Daily Udhari! My Unique Code is ${userCode} (Mobile: ${profile.mobileNumber || ''})`;
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: 'Daily Udhar Profile Code',
+                    title: 'Daily Udhari Profile Code',
                     text: shareText,
                     url: window.location.origin
                 });
@@ -149,7 +149,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ onClose, onLogout }
                                     <ShieldCheck size={12} /> Verified
                                 </span>
                             </div>
-                            <p className="text-xs text-slate-400 mt-0.5">Daily Udhar Member • Level 1</p>
+                            <p className="text-xs text-slate-400 mt-0.5">Daily Udhari Member • Level 1</p>
                         </div>
                     </div>
 
@@ -221,7 +221,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ onClose, onLogout }
                                                 D
                                             </div>
                                             <div>
-                                                <p className="text-[11px] font-black tracking-widest uppercase text-white">Daily Udhar</p>
+                                                <p className="text-[11px] font-black tracking-widest uppercase text-white">Daily Udhari</p>
                                                 <p className="text-[8px] font-bold text-emerald-400 tracking-wider uppercase">Prime Pass</p>
                                             </div>
                                         </div>
