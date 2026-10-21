@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, User, LogOut, TrendingUp, Plus, UserPlus, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Users, User, LogOut, TrendingUp, Plus, UserPlus, ChevronRight, X } from 'lucide-react';
 import Button from '../ui/Button';
 import ApiService from '../../services/ApiService';
 import CreateGroupModal from '../CreateGroupModal';
@@ -123,34 +123,43 @@ const Sidebar: React.FC<SidebarProps> = ({
                     opacity: isOpen || window.innerWidth >= 768 ? 1 : 0
                 }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className={`fixed md:static inset-y-0 left-0 w-72 bg-slate-950/20 backdrop-blur-2xl border-r border-white/5 flex flex-col h-full overflow-hidden z-[60] md:z-10 md:opacity-100 md:translate-x-0 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 md:translate-x-0 md:opacity-100'}`}
+                className={`fixed md:static inset-y-0 left-0 w-[85vw] max-w-xs md:w-72 bg-slate-950/95 md:bg-slate-950/20 backdrop-blur-2xl border-r border-white/5 flex flex-col h-full overflow-hidden z-[60] md:z-10 md:opacity-100 md:translate-x-0 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 md:translate-x-0 md:opacity-100'}`}
             >
                 {/* Background Accent */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-50" />
 
-                <div className="p-8 pb-6">
-                    <Link to="/" className="flex items-center gap-4">
+                <div className="p-6 md:p-8 pb-4 md:pb-6 flex items-center justify-between">
+                    <Link to="/" onClick={onClose} className="flex items-center gap-3">
                         <motion.div
                             whileHover={{ rotate: 12, scale: 1.1 }}
-                            className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-emerald-500/40"
+                            className="w-10 h-10 md:w-12 md:h-12 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-emerald-500/40"
                         >
-                            <span className="text-slate-950 font-black text-2xl">D</span>
+                            <span className="text-slate-950 font-black text-xl md:text-2xl">D</span>
                         </motion.div>
                         <div>
-                            <h2 className="text-xl font-black tracking-tighter text-white">Daily Udhari</h2>
+                            <h2 className="text-lg md:text-xl font-black tracking-tighter text-white">Daily Udhari</h2>
                             <p className="text-[9px] text-emerald-500/70 font-black uppercase tracking-[2px]">Premium Edition</p>
                         </div>
                     </Link>
+
+                    {/* Mobile Close Button */}
+                    <button
+                        onClick={onClose}
+                        className="md:hidden p-2 text-slate-400 hover:text-white rounded-xl bg-white/5 border border-white/10"
+                    >
+                        <X size={18} />
+                    </button>
                 </div>
 
-                <div className="flex-1 p-4 space-y-8 overflow-y-auto custom-scrollbar">
+                <div className="flex-1 p-4 space-y-6 md:space-y-8 overflow-y-auto custom-scrollbar">
                     <div className="space-y-1">
-                        <p className="px-4 text-[10px] font-black text-slate-500 uppercase tracking-[3px] mb-4 opacity-50">Discovery</p>
+                        <p className="px-4 text-[10px] font-black text-slate-500 uppercase tracking-[3px] mb-3 opacity-50">Discovery</p>
                         {menuItems.map((item, i) => (
                             <NavLink
                                 key={i}
                                 to={item.path}
-                                className={({ isActive }) => `w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-500 group relative ${isActive ? 'bg-emerald-500/10 text-emerald-400 font-bold' : 'text-slate-500 hover:text-slate-200 hover:bg-white/5'}`}
+                                onClick={onClose}
+                                className={({ isActive }) => `w-full flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-300 group relative ${isActive ? 'bg-emerald-500/10 text-emerald-400 font-bold' : 'text-slate-500 hover:text-slate-200 hover:bg-white/5'}`}
                             >
                                 {({ isActive }) => (
                                     <>
@@ -194,7 +203,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                                     <div key={group.id} className="space-y-1">
                                         <NavLink
                                             to={`/groups/${group.id}`}
-                                            className={({ isActive }) => `w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-500 group relative ${isActive ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-lg shadow-emerald-500/5' : 'text-slate-500 hover:text-slate-200 hover:bg-white/5 border border-transparent'}`}
+                                            onClick={onClose}
+                                            className={({ isActive }) => `w-full flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-300 group relative ${isActive ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-lg shadow-emerald-500/5' : 'text-slate-500 hover:text-slate-200 hover:bg-white/5 border border-transparent'}`}
                                         >
                                             {({ isActive }) => (
                                                 <>
@@ -262,7 +272,10 @@ const Sidebar: React.FC<SidebarProps> = ({
                     <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        onClick={onOpenProfile}
+                        onClick={() => {
+                            onClose?.();
+                            onOpenProfile?.();
+                        }}
                         className="w-full p-3 rounded-2xl bg-white/5 hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/20 flex items-center gap-3 transition-all text-left group"
                         data-testid="sidebar-profile-btn"
                     >

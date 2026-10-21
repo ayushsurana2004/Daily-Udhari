@@ -49,14 +49,14 @@ const GroupDetail: React.FC = () => {
                 refreshTrigger={refreshTrigger}
             />
 
-            <div className="mt-12">
+            <div className="mt-6 sm:mt-12">
                 <SimplifiedDebts groupId={parseInt(id || '0')} refreshTrigger={refreshTrigger} />
             </div>
 
-            <div className="mt-12">
-                <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-2xl font-black tracking-tighter text-white">Group Ledger</h2>
-                    <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent mx-8 opacity-50" />
+            <div className="mt-6 sm:mt-12">
+                <div className="flex items-center justify-between mb-4 sm:mb-8">
+                    <h2 className="text-xl sm:text-2xl font-black tracking-tighter text-white">Group Ledger</h2>
+                    <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent mx-4 sm:mx-8 opacity-50" />
                 </div>
                 <ExpenseList groupId={parseInt(id || '0')} refreshTrigger={refreshTrigger} />
             </div>

@@ -44,50 +44,50 @@ const Friends: React.FC = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
             >
-                <div className="flex items-center justify-between mb-12">
-                    <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 bg-rose-500 rounded-2xl flex items-center justify-center text-slate-950 shadow-2xl shadow-rose-500/20">
-                            <User size={28} />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-12">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="w-11 h-11 sm:w-14 sm:h-14 bg-rose-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-slate-950 shadow-2xl shadow-rose-500/20 shrink-0">
+                            <User size={24} className="sm:w-7 sm:h-7" />
                         </div>
                         <div>
-                            <h1 className="text-3xl font-black text-white tracking-tighter">Your Network</h1>
-                            <p className="text-rose-500/70 font-black uppercase tracking-[3px] text-[10px]">Connected Personnel</p>
+                            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tighter">Your Network</h1>
+                            <p className="text-rose-500/70 font-black uppercase tracking-[2px] sm:tracking-[3px] text-[9px] sm:text-[10px]">Connected Personnel</p>
                         </div>
                     </div>
 
-                    <Button leftIcon={<UserPlus size={18} />} variant="primary" onClick={() => setIsInviteOpen(true)}>
+                    <Button leftIcon={<UserPlus size={18} />} variant="primary" className="w-full sm:w-auto h-12 !justify-center" onClick={() => setIsInviteOpen(true)}>
                         Invite Friend
                     </Button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
                     {isLoading ? (
                         <div className="text-white col-span-full">Loading network...</div>
                     ) : friends.length > 0 ? (
                         friends.map(friend => (
-                            <Card key={friend.id} className="flex items-center gap-4 p-6 hover:border-rose-500/30 transition-all group">
-                                <div className="w-14 h-14 rounded-2xl bg-slate-800 flex items-center justify-center text-xl font-black text-slate-500 group-hover:bg-rose-500 group-hover:text-slate-950 transition-all">
+                            <Card key={friend.id} className="flex items-center gap-3 sm:gap-4 !p-3.5 sm:!p-5 hover:border-rose-500/30 transition-all group">
+                                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-slate-800 flex items-center justify-center text-base sm:text-xl font-black text-slate-500 group-hover:bg-rose-500 group-hover:text-slate-950 transition-all shrink-0">
                                     {friend.name.substring(0, 2).toUpperCase()}
                                 </div>
-                                <div className="flex-1">
-                                    <h4 className="text-white font-bold">{friend.name}</h4>
-                                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">{friend.mobileNumber}</p>
+                                <div className="flex-1 min-w-0">
+                                    <h4 className="text-white font-bold text-sm sm:text-base truncate">{friend.name}</h4>
+                                    <p className="text-slate-500 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest truncate">{friend.mobileNumber}</p>
                                 </div>
-                                <div className="text-right">
+                                <div className="text-right shrink-0">
                                     {friend.balance > 0 ? (
                                         <>
-                                            <p className="text-[10px] text-slate-500 font-black uppercase mb-1">Owes you</p>
-                                            <span className="text-emerald-400 text-sm font-black tracking-tighter">₹ {friend.balance.toFixed(2)}</span>
+                                            <p className="text-[9px] sm:text-[10px] text-slate-500 font-black uppercase mb-0.5 sm:mb-1">Owes you</p>
+                                            <span className="text-emerald-400 text-xs sm:text-sm font-black tracking-tighter">₹ {friend.balance.toFixed(2)}</span>
                                         </>
                                     ) : friend.balance < 0 ? (
                                         <>
-                                            <p className="text-[10px] text-slate-500 font-black uppercase mb-1">You owe</p>
-                                            <span className="text-rose-400 text-sm font-black tracking-tighter">₹ {Math.abs(friend.balance).toFixed(2)}</span>
+                                            <p className="text-[9px] sm:text-[10px] text-slate-500 font-black uppercase mb-0.5 sm:mb-1">You owe</p>
+                                            <span className="text-rose-400 text-xs sm:text-sm font-black tracking-tighter">₹ {Math.abs(friend.balance).toFixed(2)}</span>
                                         </>
                                     ) : (
                                         <>
-                                            <p className="text-[10px] text-slate-500 font-black uppercase mb-1">Status</p>
-                                            <span className="text-slate-500 text-sm font-black tracking-tighter">Settled Up</span>
+                                            <p className="text-[9px] sm:text-[10px] text-slate-500 font-black uppercase mb-0.5 sm:mb-1">Status</p>
+                                            <span className="text-slate-500 text-xs sm:text-sm font-black tracking-tighter">Settled Up</span>
                                         </>
                                     )}
                                 </div>

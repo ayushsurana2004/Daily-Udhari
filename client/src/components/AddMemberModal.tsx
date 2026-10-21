@@ -56,12 +56,12 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ groupId, groupName, onC
     };
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"
+                className="fixed inset-0 bg-slate-950/80 backdrop-blur-md"
                 onClick={onClose}
             />
 
@@ -69,17 +69,17 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ groupId, groupName, onC
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative w-full max-w-sm z-10"
+                className="relative w-full max-w-sm z-10 my-auto"
             >
-                <Card className="!p-0 border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] bg-slate-900/60 backdrop-blur-3xl overflow-hidden !rounded-[2.5rem] inner-glow relative">
+                <Card className="!p-0 border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] bg-slate-900/95 backdrop-blur-3xl overflow-hidden !rounded-2xl sm:!rounded-3xl md:!rounded-[2.5rem] inner-glow relative max-h-[92vh] flex flex-col">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none" />
-                    <div className="p-5 border-b border-white/5 flex justify-between items-center bg-gradient-to-r from-emerald-500/10 to-transparent">
+                    <div className="p-4 sm:p-5 border-b border-white/5 flex justify-between items-center bg-gradient-to-r from-emerald-500/10 to-transparent shrink-0">
                         <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center text-slate-950 shadow-lg shadow-emerald-500/20">
+                            <div className="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center text-slate-950 shadow-lg shadow-emerald-500/20 shrink-0">
                                 <UserPlus size={18} strokeWidth={2.5} />
                             </div>
                             <div>
-                                <h2 className="text-lg font-black text-white tracking-tighter">Invite Member</h2>
+                                <h2 className="text-base sm:text-lg font-black text-white tracking-tighter">Invite Member</h2>
                                 <p className="text-[9px] text-emerald-500/70 font-black uppercase tracking-[2px]">{groupName}</p>
                             </div>
                         </div>
@@ -92,7 +92,7 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ groupId, groupName, onC
                         </motion.button>
                     </div>
 
-                    <div className="p-4 space-y-3">
+                    <div className="p-4 space-y-3 overflow-y-auto custom-scrollbar flex-1">
                         <AnimatePresence>
                             {error && (
                                 <motion.div

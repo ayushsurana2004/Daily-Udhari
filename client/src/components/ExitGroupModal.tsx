@@ -68,7 +68,7 @@ const ExitGroupModal: React.FC<ExitGroupModalProps> = ({
     };
 
     return createPortal(
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -83,29 +83,29 @@ const ExitGroupModal: React.FC<ExitGroupModalProps> = ({
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 className="relative z-10 w-full max-w-md my-auto"
             >
-                <Card className="!p-0 !rounded-[2rem] shadow-2xl shadow-rose-500/10 border-rose-500/20 bg-slate-900/95 backdrop-blur-2xl overflow-hidden">
+                <Card className="!p-0 !rounded-2xl sm:!rounded-[2rem] shadow-2xl shadow-rose-500/10 border-rose-500/20 bg-slate-900/95 backdrop-blur-2xl overflow-hidden max-h-[92vh] flex flex-col">
                     {/* Header */}
-                    <div className="p-6 sm:p-8 pb-4 flex items-center justify-between border-b border-white/5 bg-gradient-to-r from-rose-500/10 via-transparent to-transparent">
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 bg-gradient-to-tr from-rose-600 to-rose-500 rounded-2xl flex items-center justify-center text-slate-950 shadow-xl shadow-rose-500/30">
-                                <LogOut size={22} strokeWidth={2.5} />
+                    <div className="p-4 sm:p-6 md:p-8 pb-3 sm:pb-4 flex items-center justify-between border-b border-white/5 bg-gradient-to-r from-rose-500/10 via-transparent to-transparent shrink-0">
+                        <div className="flex items-center gap-3 sm:gap-4">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-tr from-rose-600 to-rose-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-slate-950 shadow-xl shadow-rose-500/30 shrink-0">
+                                <LogOut size={20} className="sm:w-6 sm:h-6" strokeWidth={2.5} />
                             </div>
                             <div>
-                                <h3 className="text-xl font-black text-white tracking-tight">Exit Squad</h3>
-                                <p className="text-[10px] text-rose-400 font-black uppercase tracking-[2px]">{groupName}</p>
+                                <h3 className="text-lg sm:text-xl font-black text-white tracking-tight">Exit Squad</h3>
+                                <p className="text-[9px] sm:text-[10px] text-rose-400 font-black uppercase tracking-[2px]">{groupName}</p>
                             </div>
                         </div>
                         <motion.button
                             whileHover={{ scale: 1.1, rotate: 90 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={onClose}
-                            className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-white transition-colors border border-white/5"
+                            className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-white transition-colors border border-white/5"
                         >
-                            <X size={20} />
+                            <X size={18} className="sm:w-5 sm:h-5" />
                         </motion.button>
                     </div>
 
-                    <div className="p-6 sm:p-8 space-y-6">
+                    <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 overflow-y-auto custom-scrollbar flex-1">
                         {error && (
                             <motion.div
                                 initial={{ opacity: 0, y: -5 }}

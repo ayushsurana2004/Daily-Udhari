@@ -110,7 +110,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ onClose, onLogout }
     };
 
     return createPortal(
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto">
             {/* Backdrop */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -126,77 +126,77 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ onClose, onLogout }
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                className="relative z-10 w-full max-w-lg bg-slate-900/90 border border-white/10 rounded-3xl shadow-2xl shadow-emerald-500/10 overflow-hidden my-auto"
+                className="relative z-10 w-full max-w-lg bg-slate-900/95 border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl shadow-emerald-500/10 overflow-hidden my-auto max-h-[92vh] flex flex-col"
             >
                 {/* Top Ambient Glow */}
                 <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-emerald-500/15 via-cyan-500/5 to-transparent pointer-events-none" />
 
                 {/* Header */}
-                <div className="relative p-6 sm:p-8 pb-4 flex items-center justify-between border-b border-white/5">
-                    <div className="flex items-center gap-4">
+                <div className="relative p-4 sm:p-6 pb-3 sm:pb-4 flex items-center justify-between border-b border-white/5 shrink-0">
+                    <div className="flex items-center gap-3 sm:gap-4">
                         <div className="relative">
-                            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-cyan-500 p-[2px] shadow-lg shadow-emerald-500/25">
-                                <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center font-black text-xl text-emerald-400">
+                            <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-cyan-500 p-[2px] shadow-lg shadow-emerald-500/25">
+                                <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center font-black text-lg sm:text-xl text-emerald-400">
                                     {initials}
                                 </div>
                             </div>
-                            <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-slate-950 rounded-full shadow-[0_0_8px_#10b981]" />
+                            <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 bg-emerald-500 border-2 border-slate-950 rounded-full shadow-[0_0_8px_#10b981]" />
                         </div>
                         <div>
                             <div className="flex items-center gap-2">
-                                <h2 className="text-xl font-black text-white tracking-tight">{profile.name || 'Your Profile'}</h2>
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold">
-                                    <ShieldCheck size={12} /> Verified
+                                <h2 className="text-lg sm:text-xl font-black text-white tracking-tight">{profile.name || 'Your Profile'}</h2>
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[9px] sm:text-[10px] font-bold">
+                                    <ShieldCheck size={11} /> Verified
                                 </span>
                             </div>
-                            <p className="text-xs text-slate-400 mt-0.5">Daily Udhari Member • Level 1</p>
+                            <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Daily Udhari Member • Level 1</p>
                         </div>
                     </div>
 
                     <button
                         onClick={onClose}
-                        className="w-10 h-10 rounded-2xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors border border-white/5"
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors border border-white/5"
                     >
-                        <X size={20} />
+                        <X size={18} className="sm:w-5 sm:h-5" />
                     </button>
                 </div>
 
                 {/* Navigation Tabs */}
-                <div className="flex p-2 gap-2 bg-slate-950/40 border-b border-white/5">
+                <div className="flex p-1.5 sm:p-2 gap-1.5 sm:gap-2 bg-slate-950/40 border-b border-white/5 shrink-0">
                     <button
                         onClick={() => setActiveTab('card')}
-                        className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+                        className={`flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
                             activeTab === 'card'
                                 ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shadow-lg shadow-emerald-500/5'
                                 : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
                         }`}
                     >
-                        <CreditCard size={15} /> Member Pass
+                        <CreditCard size={14} /> Pass
                     </button>
                     <button
                         onClick={() => setActiveTab('qr')}
-                        className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+                        className={`flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
                             activeTab === 'qr'
                                 ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 shadow-lg shadow-cyan-500/5'
                                 : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
                         }`}
                     >
-                        <QrCode size={15} /> QR & Code
+                        <QrCode size={14} /> QR & Code
                     </button>
                     <button
                         onClick={() => setActiveTab('details')}
-                        className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+                        className={`flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
                             activeTab === 'details'
                                 ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shadow-lg shadow-emerald-500/5'
                                 : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
                         }`}
                     >
-                        <User size={15} /> Info & Stats
+                        <User size={14} /> Details
                     </button>
                 </div>
 
                 {/* Content Body */}
-                <div className="p-6 sm:p-8 space-y-6">
+                <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 overflow-y-auto custom-scrollbar flex-1">
                     <AnimatePresence mode="wait">
                         {/* TAB 1: DIGITAL CARD */}
                         {activeTab === 'card' && (
@@ -206,10 +206,10 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ onClose, onLogout }
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.2 }}
-                                className="space-y-6"
+                                className="space-y-4 sm:space-y-6"
                             >
                                 {/* Holographic Digital Card */}
-                                <div className="relative w-full aspect-[1.65/1] rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 p-6 flex flex-col justify-between border border-white/15 shadow-2xl shadow-emerald-950/60 overflow-hidden group">
+                                <div className="relative w-full aspect-[1.65/1] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 p-4 sm:p-6 flex flex-col justify-between border border-white/15 shadow-2xl shadow-emerald-950/60 overflow-hidden group">
                                     {/* Shimmer overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 via-cyan-500/10 to-transparent pointer-events-none" />
                                     <div className="absolute -right-16 -bottom-16 w-48 h-48 bg-emerald-500/20 blur-3xl rounded-full pointer-events-none" />

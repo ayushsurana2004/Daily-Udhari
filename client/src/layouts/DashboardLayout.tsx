@@ -1,10 +1,10 @@
 import React from 'react';
-import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation, Link, NavLink } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
 import UserProfileModal from '../components/UserProfileModal';
 import ApiService from '../services/ApiService';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, LayoutDashboard, TrendingUp, User, Users } from 'lucide-react';
 
 const DashboardLayout: React.FC = () => {
     const navigate = useNavigate();
@@ -89,13 +89,13 @@ const DashboardLayout: React.FC = () => {
                 <div className="absolute inset-0 bg-[url('https://transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] mix-blend-overlay" />
             </div>
 
-            {/* Mobile Header */}
-            <header className="md:hidden flex items-center justify-between p-4 sm:p-6 bg-slate-950/40 backdrop-blur-3xl border-b border-white/5 z-40">
-                <Link to="/" className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                        <span className="text-slate-950 font-black text-xl">D</span>
+            {/* Mobile Header with safe-top */}
+            <header className="md:hidden flex items-center justify-between px-4 py-3 sm:px-6 bg-slate-950/60 backdrop-blur-3xl border-b border-white/5 z-40 safe-top">
+                <Link to="/" className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                        <span className="text-slate-950 font-black text-lg">D</span>
                     </div>
-                    <span className="text-lg font-black tracking-tighter">Daily Udhari</span>
+                    <span className="text-base font-black tracking-tight">Daily Udhari</span>
                 </Link>
 
                 <div className="flex items-center gap-2">
@@ -108,7 +108,7 @@ const DashboardLayout: React.FC = () => {
                         data-testid="mobile-profile-btn"
                     >
                         <div className="relative">
-                            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 p-[1.5px] shadow-sm shadow-emerald-500/25">
+                            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 p-[1.5px] shadow-sm shadow-emerald-500/25">
                                 <div className="w-full h-full bg-slate-950 rounded-[9px] flex items-center justify-center font-black text-xs text-emerald-400">
                                     {userInitials}
                                 </div>
@@ -120,9 +120,9 @@ const DashboardLayout: React.FC = () => {
                     <motion.button
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                        className="p-2.5 bg-white/5 rounded-2xl border border-white/10 text-emerald-500"
+                        className="p-2 bg-white/5 rounded-2xl border border-white/10 text-emerald-500"
                     >
-                        {isSidebarOpen ? <X size={22} /> : <Menu size={22} />}
+                        {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
                     </motion.button>
                 </div>
             </header>
@@ -175,10 +175,46 @@ const DashboardLayout: React.FC = () => {
                     </div>
                 </header>
 
-                <main className="flex-1 overflow-y-auto custom-scrollbar relative px-6 py-10 md:px-16 md:py-12">
+                <main className="flex-1 overflow-y-auto custom-scrollbar relative px-3.5 py-4 sm:px-6 md:px-16 md:py-12 pb-24 md:pb-12">
                     <Outlet context={{ refreshTrigger, handleRefresh, onOpenProfile: () => setIsProfileOpen(true) }} />
                 </main>
             </div>
+
+            {/* Mobile Bottom Navigation Bar */}
+            <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-slate-950/90 backdrop-blur-2xl border-t border-white/10 z-40 safe-bottom px-2 py-1 flex items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.6)]">
+                <NavLink
+                    to="/"
+                    end
+                    className={({ isActive }) => `flex flex-col items-center py-1.5 px-3 rounded-2xl transition-all ${isActive ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                >
+                    <LayoutDashboard size={20} />
+                    <span className="text-[10px] mt-0.5 tracking-tight font-bold">Home</span>
+                </NavLink>
+
+                <NavLink
+                    to="/activity"
+                    className={({ isActive }) => `flex flex-col items-center py-1.5 px-3 rounded-2xl transition-all ${isActive ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                >
+                    <TrendingUp size={20} />
+                    <span className="text-[10px] mt-0.5 tracking-tight font-bold">Activity</span>
+                </NavLink>
+
+                <button
+                    onClick={() => setIsSidebarOpen(true)}
+                    className="flex flex-col items-center py-1.5 px-3 rounded-2xl text-slate-400 hover:text-emerald-400 transition-all"
+                >
+                    <Users size={20} />
+                    <span className="text-[10px] mt-0.5 tracking-tight font-bold">Squads</span>
+                </button>
+
+                <NavLink
+                    to="/friends"
+                    className={({ isActive }) => `flex flex-col items-center py-1.5 px-3 rounded-2xl transition-all ${isActive ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                >
+                    <User size={20} />
+                    <span className="text-[10px] mt-0.5 tracking-tight font-bold">Friends</span>
+                </NavLink>
+            </nav>
 
             {/* User Profile & Code Details Modal */}
             <AnimatePresence>

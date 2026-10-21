@@ -25,10 +25,10 @@ const Overview: React.FC = () => {
                 refreshTrigger={refreshTrigger}
             />
 
-            <div className="mt-16">
-                <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-2xl font-black tracking-tighter text-white">Latest Transactions</h2>
-                    <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent mx-8 opacity-50" />
+            <div className="mt-6 sm:mt-16">
+                <div className="flex items-center justify-between mb-4 sm:mb-8">
+                    <h2 className="text-xl sm:text-2xl font-black tracking-tighter text-white">Latest Transactions</h2>
+                    <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent mx-4 sm:mx-8 opacity-50" />
                 </div>
                 <ExpenseList groupId={null} refreshTrigger={refreshTrigger} />
             </div>

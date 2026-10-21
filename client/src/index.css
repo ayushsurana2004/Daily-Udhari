@@ -132,3 +132,20 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
+
+/* Mobile Safe Areas */
+.safe-top {
+  padding-top: max(env(safe-area-inset-top, 0px), 0.75rem);
+}
+
+.safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 0.75rem);
+}
+
+/* Prevent unwanted horizontal scroll on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-tap-highlight-color: transparent;
+}
+

@@ -11,7 +11,7 @@ interface AuthLayoutProps {
 
 const AuthLayout: React.FC<AuthLayoutProps> = ({ children, title, subtitle }) => {
     return (
-        <div className="min-h-screen bg-[#020617] flex items-center justify-center p-4 md:p-6 overflow-hidden relative font-sans">
+        <div className="min-h-screen bg-[#020617] flex items-center justify-center p-3.5 sm:p-4 md:p-6 py-8 sm:py-12 overflow-y-auto relative font-sans safe-top safe-bottom">
             {/* Ultra Premium Background Decoratives */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
                 <motion.div
@@ -41,20 +41,20 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, title, subtitle }) =>
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="w-full max-w-[440px] z-10"
+                className="w-full max-w-[440px] z-10 my-auto"
             >
-                <Card className="!p-6 md:!p-10 !rounded-3xl md:!rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] border-white/5 bg-slate-900/20 backdrop-blur-3xl">
-                    <div className="text-center mb-8 md:mb-10">
+                <Card className="!p-5 sm:!p-8 md:!p-10 !rounded-2xl sm:!rounded-3xl md:!rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] border-white/5 bg-slate-900/60 backdrop-blur-3xl">
+                    <div className="text-center mb-6 sm:mb-8 md:mb-10">
                         <motion.div
                             initial={{ rotate: -15, scale: 0.8 }}
                             animate={{ rotate: 0, scale: 1 }}
                             transition={{ delay: 0.2, type: "spring" }}
-                            className="inline-flex items-center justify-center p-3 md:p-4 bg-emerald-500 rounded-2xl md:rounded-3xl mb-4 md:mb-6 shadow-2xl shadow-emerald-500/40"
+                            className="inline-flex items-center justify-center p-3 sm:p-3.5 md:p-4 bg-emerald-500 rounded-2xl md:rounded-3xl mb-3 sm:mb-4 md:mb-6 shadow-2xl shadow-emerald-500/40"
                         >
-                            <ShieldCheck className="text-slate-950" size={36} strokeWidth={2.5} />
+                            <ShieldCheck className="text-slate-950" size={32} strokeWidth={2.5} />
                         </motion.div>
-                        <h1 className="text-4xl md:text-5xl font-black tracking-tighter gradient-text mb-2 md:mb-3 leading-tight">Daily Udhari</h1>
-                        <p className="text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-[2px] md:tracking-wider">{subtitle}</p>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter gradient-text mb-1.5 sm:mb-2 md:mb-3 leading-tight">Daily Udhari</h1>
+                        <p className="text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-[1.5px] sm:tracking-[2px] md:tracking-wider">{subtitle}</p>
                     </div>
 
                     {children}
